@@ -11,7 +11,7 @@ Before installing
 Installing
 ----------
 
-1) Extract the directories "giix-core" and "giix-components" from the
+1) Extract the directory "giix" from the
 downloaded archive into your application's protected/extensions directory.
 
 2) Configure the gii generator path in your application, like:
@@ -19,7 +19,7 @@ downloaded archive into your application's protected/extensions directory.
 	'gii' => array(
 		'class' => 'system.gii.GiiModule',
 		'generatorPaths' => array(
-			'ext.giix-core', // giix generators
+			'ext.giix.generators', // giix generators
 		),
 	),
 ),
@@ -28,13 +28,13 @@ downloaded archive into your application's protected/extensions directory.
 when needed, like:
 'import' => array(
 	...
-	'ext.giix-components.*', // giix components
+	'ext.giix.components.*', // giix components
 ),
 
 It is recommended to set at least the 'password' and 'ipFilters' properties
 in gii for security.
 For more information see the gii documentation at <http://www.yiiframework.com/doc/api/GiiModule>.
 
-Additionaly, you may remove the entire 'giix-core' directory and generator
+Additionaly, you may remove the entire 'generators' directory and generator
 configuration (step 2 above) when releasing your Web application for improved
 security.
