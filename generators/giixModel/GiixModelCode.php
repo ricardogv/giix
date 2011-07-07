@@ -15,6 +15,7 @@ Yii::import('ext.giix.helpers.*');
  * GiixModelCode is the model for giix model generator.
  *
  * @author Rodrigo Coelho <rodrigo@giix.org>
+ * @package giix.generators.giixModel
  */
 class GiixModelCode extends ModelCode {
 

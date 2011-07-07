@@ -15,6 +15,7 @@ Yii::import('ext.giix.helpers.*');
  * GiixCrudCode is the model for giix crud generator.
  *
  * @author Rodrigo Coelho <rodrigo@giix.org>
+ * @package giix.generators.giixCrud
  */
 class GiixCrudCode extends CrudCode {
 
