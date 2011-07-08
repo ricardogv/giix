@@ -50,9 +50,9 @@ WARNINGS
 --------
 
 giix is not fully tested now, so please test your application and be careful using it.
-giix is not production ready yet.
-
 giix is still in development. Some changes may break backwards compatibility.
+
+Are you upgrading? Please don't forget to read the UPGRADE file for instructions!
 
 REQUIREMENTS
 ------------
