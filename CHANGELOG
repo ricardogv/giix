@@ -5,6 +5,7 @@ Version 1.10, to be released
 ----------------------------
 Chg: Better directory organization. Now giix have its own root directory.
 Bug: Fixes issue 23: Removed undefined variables from GxActiveRecord::saveRelated.
+Chg: Removed the message translation from the generated view files.
 
 Version 1.9, 2011-07-06
 ----------------------------

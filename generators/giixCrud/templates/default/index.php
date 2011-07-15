@@ -8,13 +8,13 @@
 echo "<?php\n
 \$this->breadcrumbs = array(
 	{$this->modelClass}::label(2),
-	Yii::t('app', 'Index'),
+	'Index',
 );\n";
 ?>
 
 $this->menu = array(
-	array('label'=>Yii::t('app', 'Create') . ' ' . <?php echo $this->modelClass; ?>::label(), 'url' => array('create')),
-	array('label'=>Yii::t('app', 'Manage') . ' ' . <?php echo $this->modelClass; ?>::label(2), 'url' => array('admin')),
+	array('label'=>'Create' . ' ' . <?php echo $this->modelClass; ?>::label(), 'url' => array('create')),
+	array('label'=>'Manage' . ' ' . <?php echo $this->modelClass; ?>::label(2), 'url' => array('admin')),
 );
 ?>
 

@@ -17,7 +17,7 @@ $form = $this->beginWidget('GxActiveForm', array(
 
 
 	<p class="note">
-		<?php echo "<?php echo Yii::t('app', 'Fields with'); ?> <span class=\"required\">*</span> <?php echo Yii::t('app', 'are required'); ?>"; ?>.
+		Fields with <span class="required">*</span> are required.
 	</p>
 
 	<?php echo "<?php echo \$form->errorSummary(\$model); ?>\n"; ?>
@@ -40,7 +40,7 @@ $form = $this->beginWidget('GxActiveForm', array(
 <?php endforeach; ?>
 
 <?php echo "<?php
-echo GxHtml::submitButton(Yii::t('app', 'Save'));
+echo GxHtml::submitButton('Save');
 \$this->endWidget();
 ?>\n"; ?>
 </div><!-- form -->

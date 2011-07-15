@@ -24,7 +24,7 @@
 
 <?php endforeach; ?>
 	<div class="row buttons">
-		<?php echo "<?php echo GxHtml::submitButton(Yii::t('app', 'Search')); ?>\n"; ?>
+		<?php echo "<?php echo GxHtml::submitButton('Search'); ?>\n"; ?>
 	</div>
 
 <?php echo "<?php \$this->endWidget(); ?>\n"; ?>

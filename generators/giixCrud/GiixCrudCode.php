@@ -198,8 +198,8 @@ class GiixCrudCode extends CrudCode {
 					|| strtoupper($column->dbType) == 'BOOLEAN') {
 				return "array(
 					'name' => '{$column->name}',
-					'value' => '(\$data->{$column->name} === 0) ? Yii::t(\\'app\\', \\'No\\') : Yii::t(\\'app\\', \\'Yes\\')',
-					'filter' => array('0' => Yii::t('app', 'No'), '1' => Yii::t('app', 'Yes')),
+					'value' => '(\$data->{$column->name} === 0) ? \\'No\\' : \\'Yes\\'',
+					'filter' => array('0' => 'No', '1' => 'Yes'),
 					)";
 			} else // Common column.
 				return "'{$column->name}'";
@@ -230,14 +230,14 @@ class GiixCrudCode extends CrudCode {
 					|| strtoupper($column->dbType) == 'BIT'
 					|| strtoupper($column->dbType) == 'BOOL'
 					|| strtoupper($column->dbType) == 'BOOLEAN')
-				return "echo \$form->dropDownList(\$model, '{$column->name}', array('0' => Yii::t('app', 'No'), '1' => Yii::t('app', 'Yes')), array('prompt' => Yii::t('app', 'All')))";
+				return "echo \$form->dropDownList(\$model, '{$column->name}', array('0' => 'No', '1' => 'Yes'), array('prompt' => 'All'))";
 			else // Common column. generateActiveField method will add 'echo' when necessary.
 				return $this->generateActiveField($this->modelClass, $column);
 		} else { // FK.
 			// Find the related model for this column.
 			$relation = $this->findRelation($modelClass, $column);
 			$relatedModelClass = $relation[3];
-			return "echo \$form->dropDownList(\$model, '{$column->name}', GxHtml::listDataEx({$relatedModelClass}::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All')))";
+			return "echo \$form->dropDownList(\$model, '{$column->name}', GxHtml::listDataEx({$relatedModelClass}::model()->findAllAttributes(null, true)), array('prompt' => 'All'))";
 		}
 	}
 
