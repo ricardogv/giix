@@ -7,6 +7,7 @@ Chg: Better directory organization. Now giix have its own root directory.
 Bug: Fixes issue 23: Removed undefined variables from GxActiveRecord::saveRelated.
 Chg: Removed the message translation from the generated view files.
 Enh: Added a message category to the Yii::t calls.
+Enh: Added the configuration file for generating message translations.
 
 Version 1.9, 2011-07-06
 ----------------------------
