@@ -98,11 +98,11 @@ abstract class GxController extends Controller {
 				// Check if the table has composite PK.
 				$tablePk = $staticModel->getTableSchema()->primaryKey;
 				if (!is_array($tablePk))
-					throw new CHttpException(400, Yii::t('giix', 'Your request is invalid.'));
+					throw new CHttpException(400, Yii::t('giix.messages', 'Your request is invalid.'));
 
 				// Check if there are the correct number of keys.
 				if (count($key) !== count($tablePk))
-					throw new CHttpException(400, Yii::t('giix', 'Your request is invalid.'));
+					throw new CHttpException(400, Yii::t('giix.messages', 'Your request is invalid.'));
 
 				// Get an array of PK values indexed by the column names.
 				$pk = $staticModel->fillPkColumnNames($key);
@@ -122,11 +122,11 @@ abstract class GxController extends Controller {
 				// The table has a composite PK.
 				// The key must be a string to have a PK separator.
 				if (!is_string($key))
-					throw new CHttpException(400, Yii::t('giix', 'Your request is invalid.'));
+					throw new CHttpException(400, Yii::t('giix.messages', 'Your request is invalid.'));
 
 				// There must be a PK separator in the key.
 				if (stripos($key, GxActiveRecord::$pkSeparator) === false)
-					throw new CHttpException(400, Yii::t('giix', 'Your request is invalid.'));
+					throw new CHttpException(400, Yii::t('giix.messages', 'Your request is invalid.'));
 
 				// Generate an array, splitting by the separator.
 				$keyValues = explode(GxActiveRecord::$pkSeparator, $key);
@@ -142,7 +142,7 @@ abstract class GxController extends Controller {
 
 		// Check if we have a model.
 		if ($model === null)
-			throw new CHttpException(404, Yii::t('giix', 'The requested page does not exist.'));
+			throw new CHttpException(404, Yii::t('giix.messages', 'The requested page does not exist.'));
 
 		return $model;
 	}
@@ -187,7 +187,7 @@ abstract class GxController extends Controller {
 	 */
 	protected function getRelatedData($form, $relations, $uncheckValue = '') {
 		if ($uncheckValue === null)
-			throw new InvalidArgumentException(Yii::t('giix', 'giix cannot handle automatically the POST data if "uncheckValue" is null.'));
+			throw new InvalidArgumentException(Yii::t('giix.messages', 'giix cannot handle automatically the POST data if "uncheckValue" is null.'));
 
 		$relatedPk = array();
 		foreach ($relations as $relationName => $relationData) {

@@ -48,7 +48,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * @see getRelationLabel
 	 */
 	public static function label($n = 1) {
-		throw new Exception(Yii::t('giix', 'This method should be overriden by the Active Record class.'));
+		throw new Exception(Yii::t('giix.messages', 'This method should be overriden by the Active Record class.'));
 	}
 
 	/**
@@ -124,7 +124,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 					}
 				} else {
 					// It is not the last item.
-					throw new InvalidArgumentException(Yii::t('giix', 'The attribute "{attribute}" should be the last name.', array('{attribute}' => $relName)));
+					throw new InvalidArgumentException(Yii::t('giix.messages', 'The attribute "{attribute}" should be the last name.', array('{attribute}' => $relName)));
 				}
 			}
 
@@ -296,7 +296,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 		// Check if the count of values and columns match.
 		$columnCount = count($columnNames);
 		if (count($pk) !== $columnCount)
-			throw new InvalidArgumentException(Yii::t('giix', 'The count of values in the argument "pk" ({countPk}) does not match the count of columns in the composite PK ({countColumns}).'), array(
+			throw new InvalidArgumentException(Yii::t('giix.messages', 'The count of values in the argument "pk" ({countPk}) does not match the count of columns in the composite PK ({countColumns}).'), array(
 				'{countPk}' => count($pk),
 				'{countColumns}' => $columnCount,
 			));
@@ -409,7 +409,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 
 		// This active record can't be new for the method to work correctly.
 		if ($this->getIsNewRecord())
-			throw new CDbException(Yii::t('giix', 'Cannot save the related records to the database because the main record is new.'));
+			throw new CDbException(Yii::t('giix.messages', 'Cannot save the related records to the database because the main record is new.'));
 
 		// Save each related data.
 		foreach ($relatedData as $relationName => $relationData) {
@@ -428,7 +428,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 			// Get the primary key value of the main model.
 			$thisPkValue = $this->getPrimaryKey();
 			if (is_array($thisPkValue))
-				throw new Exception(Yii::t('giix', 'Composite primary keys are not supported.'));
+				throw new Exception(Yii::t('giix.messages', 'Composite primary keys are not supported.'));
 			// Get the current related models of this relation and map the current related primary keys.
 			$currentRelation = $pivotModelStatic->findAll(new CDbCriteria(array(
 								'select' => $relatedFkName,
@@ -615,7 +615,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 									} else {
 										// Related model not found.
 										// We can't continue without filling up the FK!
-										throw new Exception(Yii::t('giix', 'Related model not found. Cannot continue without filling up the FK.'));
+										throw new Exception(Yii::t('giix.messages', 'Related model not found. Cannot continue without filling up the FK.'));
 									}
 								}
 							}
