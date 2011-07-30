@@ -57,10 +57,10 @@ Are you upgrading? Please don't forget to read the UPGRADE file for instructions
 REQUIREMENTS
 ------------
 
-Yii 1.1.7+ is required.
+Yii 1.1.9+ is required.
 
 giix should run with:
-- Yii 1.1.7+ (tested with revision 3340)
+- Yii 1.1.8+ (tested with revision 3364 + patch*)
 - Linux
 - Apache 2.2 or nginx 0.8+
 - MySQL 5.x
@@ -68,6 +68,9 @@ giix should run with:
 
 giix may run on other setups, but there is no official suppport for them.
 There is no planned official support for other setups, including Windows/IIS, XAMPP/etc or other DBMS.
+
+* You can use giix with Yii 1.1.8 if you patch your Yii installation with the patch provided in the issue 2624:
+<http://code.google.com/p/yii/issues/detail?id=2624>.
 
 INSTALLATION AND UPGRADING
 --------------------------

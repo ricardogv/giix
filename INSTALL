@@ -31,6 +31,19 @@ when needed, like:
 	'ext.giix.components.*', // giix components
 ),
 
+4) Register the giix messages directory, like the example below.
+Note: This feature is pending on Yii core (as of Yii 1.1.8 revision 3364). You will need to patch your Yii instalation.
+See <http://code.google.com/p/yii/issues/detail?id=2624> for details and the patch.
+'components' => array(
+	...
+	'messages' => array (
+		// Pending on core: http://code.google.com/p/yii/issues/detail?id=2624
+		'extensionBasePaths' => array(
+			'giix' => 'ext.giix.messages', // giix messages directory.
+		),
+	),
+),
+
 It is recommended to set at least the 'password' and 'ipFilters' properties
 in gii for security.
 For more information see the gii documentation at <http://www.yiiframework.com/doc/api/GiiModule>.

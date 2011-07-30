@@ -8,6 +8,7 @@ Bug: Fixes issue 23: Removed undefined variables from GxActiveRecord::saveRelate
 Chg: Removed the message translation from the generated view files.
 Enh: Added a message category to the Yii::t calls.
 Enh: Added the configuration file for generating message translations.
+Enh: Added instructions and details about the patch and messages directory configuration.
 
 Version 1.9, 2011-07-06
 ----------------------------
