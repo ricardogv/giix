@@ -74,7 +74,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * Note: this will only work when there is no label defined in {@link CModel::attributeLabels} for this attribute.
 	 * @return string The label.
 	 * @throws InvalidArgumentException If an attribute name is found and is not the last item in the relationName parameter.
-	 * @see label
+	 * @uses label
 	 */
 	public function getRelationLabel($relationName, $n = null, $useRelationLabel = true) {
 		// Exploding the chained relation names.
@@ -192,7 +192,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * the string representation of the model must be specified in
 	 * {@link representingColumn}.
 	 * @return string The string representation for the model instance.
-	 * @see representingColumn
+	 * @uses representingColumn
 	 */
 	public function __toString() {
 		$representingColumn = $this->representingColumn();
@@ -233,6 +233,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * @param mixed $condition Query condition or criteria.
 	 * @param array $params Parameters to be bound to an SQL statement.
 	 * @return array List of active records satisfying the specified condition. An empty array is returned if none is found.
+	 * @uses representingColumn
 	 */
 	public function findAllAttributes($attributes = null, $withPk = false, $condition='', $params=array()) {
 		Yii::trace(get_class($this) . '.findAllAttributes()', 'giix.components.GxActiveRecord');
@@ -261,6 +262,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * @return string|array The pk value as a string (for single pk tables) or
 	 * array (for composite pk tables) if one model was specified or
 	 * an array of strings or arrays if multiple models were specified.
+	 * @uses pkSeparator
 	 */
 	public static function extractPkValue($model, $forceString = false) {
 		if ($model === null)
@@ -408,6 +410,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * @see saveMultiple
 	 * @throws CException If this record is new.
 	 * @throws CException If this active record has composite PK.
+	 * @uses pivotModels
 	 */
 	protected function saveRelated($relatedData, $runValidation = true, $batch = true) {
 		if (empty($relatedData))

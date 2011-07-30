@@ -74,6 +74,7 @@ class GxHtml extends CHtml {
 	 * Optional. If not specified, the {@link GxActiveRecord::__toString} method will be used.
 	 * @param string $groupField The attribute name for list option group names. If empty, no group will be generated.
 	 * @return array The list data that can be used in {@link dropDownList}, {@link listBox}, etc.
+	 * @uses GxActiveRecord::representingColumn
 	 */
 	public static function listDataEx($models, $valueField = null, $textField = null, $groupField = '') {
 		$listData = array();
@@ -137,6 +138,7 @@ class GxHtml extends CHtml {
 	 * In this case, the fist parameter ($model) can not be an array, it must be an instance of GxActiveRecord.
 	 * @param mixed $defaultValue The default value to return when the attribute does not exist.
 	 * @return mixed The attribute value.
+	 * @uses GxActiveRecord::representingColumn
 	 */
 	public static function valueEx($model, $attribute = null, $defaultValue = null) {
 		if ($attribute === null) {
