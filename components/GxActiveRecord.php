@@ -22,6 +22,12 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * composite pk table. Usually a character.
 	 */
 	public static $pkSeparator = '-';
+	/**
+	 * @var string the separator used to separate the {@link representingColumn}
+	 * values when there are multiple representing columns while building the
+	 * string representation of the model in {@link __toString}. Usually a character.
+	 */
+	public static $repColumnsSeparator = '-';
 
 	public static function model($className=__CLASS__) {
 		return parent::model($className);
@@ -193,6 +199,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * {@link representingColumn}.
 	 * @return string The string representation for the model instance.
 	 * @uses representingColumn
+	 * @uses repColumnsSeparator
 	 */
 	public function __toString() {
 		$representingColumn = $this->representingColumn();
@@ -208,9 +215,9 @@ abstract class GxActiveRecord extends CActiveRecord {
 		if (is_array($representingColumn)) {
 			$part = '';
 			foreach ($representingColumn as $representingColumn_item) {
-				$part .= ( $this->$representingColumn_item === null ? '' : $this->$representingColumn_item) . '-';
+				$part .= ( $this->$representingColumn_item === null ? '' : $this->$representingColumn_item) . self::$repColumnsSeparator;
 			}
-			return substr($part, 0, -1);
+			return substr($part, 0, -(mb_strlen(self::$repColumnsSeparator)));
 		} else {
 			return $this->$representingColumn === null ? '' : (string) $this->$representingColumn;
 		}
