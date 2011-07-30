@@ -234,6 +234,8 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * @return array List of active records satisfying the specified condition. An empty array is returned if none is found.
 	 */
 	public function findAllAttributes($attributes = null, $withPk = false, $condition='', $params=array()) {
+		Yii::trace(get_class($this) . '.findAllAttributes()', 'giix.components.GxActiveRecord');
+
 		$criteria = $this->getCommandBuilder()->createCriteria($condition, $params);
 		if ($attributes === null)
 			$attributes = $this->representingColumn();
@@ -340,6 +342,8 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * @see pivotModels
 	 */
 	public function saveWithRelated($relatedData, $runValidation = true, $attributes = null, $options = array()) {
+		Yii::trace(get_class($this) . '.saveWithRelated()', 'giix.components.GxActiveRecord');
+
 		// Merge the specified options with the default options.
 		$options = array_merge(
 						// The default options.
@@ -549,6 +553,8 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * @see saveWithRelated
 	 */
 	public static function saveMultiple($models, $runValidation = true, $options = array()) {
+		Yii::trace('GxActiveRecord::saveMultiple()', 'giix.components.GxActiveRecord');
+
 		// Merge the specified options with the default options.
 		$options = array_merge(
 						// The default options.
