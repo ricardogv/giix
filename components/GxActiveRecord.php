@@ -29,8 +29,9 @@ abstract class GxActiveRecord extends CActiveRecord {
 
 	/**
 	 * This method should be overridden to declare related pivot models for each MANY_MANY relationship.
-	 * The pivot model is used by {@link saveWithRelated}.
+	 * The pivot model is used by {@link saveWithRelated} and by {@link saveMultiple}.
 	 * @return array List of pivot models for each MANY_MANY relationship. Defaults to empty array.
+	 * @see saveRelated
 	 */
 	public function pivotModels() {
 		return array();
