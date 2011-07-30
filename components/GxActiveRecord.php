@@ -187,7 +187,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * {@link representingColumn}.
 	 * If the representing column is not set, the primary key will be used.
 	 * If there is no primary key, the first field will be used.
-	 * When you overwrite this method, all model attributes used to build
+	 * When you override this method, all model attributes used to build
 	 * the string representation of the model must be specified in
 	 * {@link representingColumn}.
 	 * @return string The string representation for the model instance.
@@ -326,14 +326,15 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * @param boolean $runValidation Whether to perform validation before saving the record.
 	 * If the validation fails, the record will not be saved to database. This applies to all (including related) models.
 	 * This does not apply for related models when in batch mode. This does not apply for deletes.
+	 * Defaults to true.
 	 * @param array $attributes List of attributes that need to be saved. Defaults to null,
 	 * meaning all attributes that are loaded from DB will be saved. This applies only to the main model.
 	 * @param array $options Additional options. Valid options are:
 	 * <ul>
-	 * <li>'withTransaction', boolean: Whether to use a transaction.</li>
+	 * <li>'withTransaction', boolean: Whether to use a transaction. Defaults to true.</li>
 	 * <li>'batch', boolean: Whether to try to do the deletes and inserts in batch.
 	 * While batches may be faster, using active record instances provides better control, validation, event support etc.
-	 * Batch is only supported for deletes.</li>
+	 * Batch is currently supported only for deletes. Defaults to true.</li>
 	 * </ul>
 	 * @return boolean Whether the saving succeeds.
 	 * @see pivotModels
