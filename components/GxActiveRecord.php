@@ -45,11 +45,11 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * @param integer $n The number value. This is used to support plurals. Defaults to 1 (means singular).
 	 * Notice that this number doesn't necessarily corresponds to the number (count) of items.
 	 * @return string The label.
-	 * @throws Exception If the method wasn't overriden.
+	 * @throws CException If the method wasn't overriden.
 	 * @see getRelationLabel
 	 */
 	public static function label($n = 1) {
-		throw new Exception(Yii::t('giix.messages', 'This method should be overriden by the Active Record class.'));
+		throw new CException(Yii::t('giix.messages', 'This method should be overriden by the Active Record class.'));
 	}
 
 	/**
@@ -406,8 +406,8 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * @return boolean Whether the saving succeeds.
 	 * @see saveWithRelated
 	 * @see saveMultiple
-	 * @throws CDbException If this record is new.
-	 * @throws Exception If this active record has composite PK.
+	 * @throws CException If this record is new.
+	 * @throws CException If this active record has composite PK.
 	 */
 	protected function saveRelated($relatedData, $runValidation = true, $batch = true) {
 		if (empty($relatedData))
@@ -415,7 +415,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 
 		// This active record can't be new for the method to work correctly.
 		if ($this->getIsNewRecord())
-			throw new CDbException(Yii::t('giix.messages', 'Cannot save the related records to the database because the main record is new.'));
+			throw new CException(Yii::t('giix.messages', 'Cannot save the related records to the database because the main record is new.'));
 
 		// Save each related data.
 		foreach ($relatedData as $relationName => $relationData) {
@@ -434,7 +434,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 			// Get the primary key value of the main model.
 			$thisPkValue = $this->getPrimaryKey();
 			if (is_array($thisPkValue))
-				throw new Exception(Yii::t('giix.messages', 'Composite primary keys are not supported.'));
+				throw new CException(Yii::t('giix.messages', 'Composite primary keys are not supported.'));
 			// Get the current related models of this relation and map the current related primary keys.
 			$currentRelation = $pivotModelStatic->findAll(new CDbCriteria(array(
 								'select' => $relatedFkName,
@@ -549,7 +549,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * Defaults to false.</li>
 	 * </ul>
 	 * @return boolean Whether the saving succeeds.
-	 * @throws Exception If "detectRelations" is true and the related model is not found.
+	 * @throws CException If "detectRelations" is true and the related model is not found.
 	 * @see CActiveRecord::save
 	 * @see saveWithRelated
 	 */
@@ -623,7 +623,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 									} else {
 										// Related model not found.
 										// We can't continue without filling up the FK!
-										throw new Exception(Yii::t('giix.messages', 'Related model not found. Cannot continue without filling up the FK.'));
+										throw new CException(Yii::t('giix.messages', 'Related model not found. Cannot continue without filling up the FK.'));
 									}
 								}
 							}
