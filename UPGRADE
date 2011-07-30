@@ -13,10 +13,9 @@ General upgrade intructions
 - Make a backup.
 - Clean up your assets directory.
 - Clean up your cache directory.
-- Remove the "giix-core" and "giix-components" diretories from your application's
-  extensions directory.
+- Remove the "giix" diretory from your application's extensions directory.
 - Check the requirements of the new version in the README file.
-- Then follow the install instructions for the new release.
+- Then follow the install instructions for the new release in the INSTALL file.
 
 Upgrading from 1.9
 ---------------------
