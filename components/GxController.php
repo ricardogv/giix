@@ -125,11 +125,11 @@ abstract class GxController extends Controller {
 					throw new CHttpException(400, Yii::t('giix.messages', 'Your request is invalid.'));
 
 				// There must be a PK separator in the key.
-				if (stripos($key, GxActiveRecord::$pkSeparator) === false)
+				if (stripos($key, $staticModel->pkSeparator) === false)
 					throw new CHttpException(400, Yii::t('giix.messages', 'Your request is invalid.'));
 
 				// Generate an array, splitting by the separator.
-				$keyValues = explode(GxActiveRecord::$pkSeparator, $key);
+				$keyValues = explode($staticModel->pkSeparator, $key);
 
 				// Start again using the array.
 				return $this->loadModel($keyValues, $modelClass);

@@ -21,13 +21,13 @@ abstract class GxActiveRecord extends CActiveRecord {
 	 * @var string the separator used to separate the primary keys values in a
 	 * composite pk table. Usually a character.
 	 */
-	public static $pkSeparator = '-';
+	public $pkSeparator = '-';
 	/**
 	 * @var string the separator used to separate the {@link representingColumn}
 	 * values when there are multiple representing columns while building the
 	 * string representation of the model in {@link __toString}. Usually a character.
 	 */
-	public static $repColumnsSeparator = '-';
+	public $repColumnsSeparator = '-';
 
 	public static function model($className=__CLASS__) {
 		return parent::model($className);
@@ -215,9 +215,9 @@ abstract class GxActiveRecord extends CActiveRecord {
 		if (is_array($representingColumn)) {
 			$part = '';
 			foreach ($representingColumn as $representingColumn_item) {
-				$part .= ( $this->$representingColumn_item === null ? '' : $this->$representingColumn_item) . self::$repColumnsSeparator;
+				$part .= ( $this->$representingColumn_item === null ? '' : $this->$representingColumn_item) . $this->repColumnsSeparator;
 			}
-			return substr($part, 0, -(mb_strlen(self::$repColumnsSeparator)));
+			return substr($part, 0, -(mb_strlen($this->repColumnsSeparator)));
 		} else {
 			return $this->$representingColumn === null ? '' : (string) $this->$representingColumn;
 		}
@@ -277,7 +277,7 @@ abstract class GxActiveRecord extends CActiveRecord {
 		if (!is_array($model)) {
 			$pk = $model->getPrimaryKey();
 			if ($forceString && is_array($pk))
-				$pk = implode(self::$pkSeparator, $pk);
+				$pk = implode($model->pkSeparator, $pk);
 			return $pk;
 		} else {
 			$pks = array();

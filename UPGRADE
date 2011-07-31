@@ -24,6 +24,8 @@ giix's directory layout has changed. Please review the installation instructions
 The message translation was removed from the generated view files. The translation of the view files should be done via file translation.
 See <http://www.yiiframework.com/doc/guide/1.1/en/topics.i18n#file-translation> for more information.
 
+GxActiveRecord::pkSeparator isn't declared as static anymore. You should check your code and make any necessary changes accordingly.
+
 Upgrading from 1.8
 ---------------------
 The method GxActiveRecord::label doesn't have the second parameter "ucwords" anymore. The same happens when it is overriden on the generated base model.
