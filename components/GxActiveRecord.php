@@ -18,14 +18,14 @@
 abstract class GxActiveRecord extends CActiveRecord {
 
 	/**
-	 * @var string the separator used to separate the primary keys values in a
-	 * composite pk table. Usually a character.
+	 * @var string The separator (delimiter) used to separate the primary keys values in a
+	 * string representation of the pks of a composite pk record. Usually a character.
 	 */
 	public $pkSeparator = '-';
 	/**
-	 * @var string the separator used to separate the {@link representingColumn}
+	 * @var string The separator (delimiter) used to separate the {@link representingColumn}
 	 * values when there are multiple representing columns while building the
-	 * string representation of the model in {@link __toString}. Usually a character.
+	 * string representation of the record in {@link __toString}.
 	 */
 	public $repColumnsSeparator = '-';
 
