@@ -192,25 +192,22 @@ abstract class GxActiveRecord extends CActiveRecord {
 	/**
 	 * Returns a string representation of the model instance, based on
 	 * {@link representingColumn}.
-	 * If the representing column is not set, the primary key will be used.
-	 * If there is no primary key, the first field will be used.
 	 * When you override this method, all model attributes used to build
 	 * the string representation of the model must be specified in
 	 * {@link representingColumn}.
 	 * @return string The string representation for the model instance.
+	 * @throws CException If {@link representingColumn} is not defined.
 	 * @uses representingColumn
 	 * @uses repColumnsSeparator
 	 */
 	public function __toString() {
 		$representingColumn = $this->representingColumn();
 
-		if (($representingColumn === null) || ($representingColumn === array()))
-			if ($this->getTableSchema()->primaryKey !== null) {
-				$representingColumn = $this->getTableSchema()->primaryKey;
-			} else {
-				$columnNames = $this->getTableSchema()->getColumnNames();
-				$representingColumn = $columnNames[0];
-			}
+		if (empty($representingColumn)) {
+			throw new CException(Yii::t('giix.messages', 'The representing column for the active record "{model}" is not set.', array(
+						'{model}' => get_class($this),
+					)));
+		}
 
 		if (is_array($representingColumn)) {
 			$repValues = array();
