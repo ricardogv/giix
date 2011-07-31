@@ -212,11 +212,11 @@ abstract class GxActiveRecord extends CActiveRecord {
 		if (is_array($representingColumn)) {
 			$repValues = array();
 			foreach ($representingColumn as $repColumn_item) {
-				$repValues[] = (($repColumn_item_value = $this->$repColumn_item) === null) ? '' : $repColumn_item_value;
+				$repValues[] = ((($repColumn_item_value = $this->$repColumn_item) === null) ? '' : (string) $repColumn_item_value);
 			}
 			return implode($this->repColumnsSeparator, $repValues);
 		} else {
-			return $this->$representingColumn === null ? '' : (string) $this->$representingColumn;
+			return ((($repColumn_value = $this->$representingColumn) === null) ? '' : (string) $repColumn_value);
 		}
 	}
 
