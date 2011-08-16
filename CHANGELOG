@@ -10,6 +10,7 @@ Enh: Added a message category to the Yii::t calls.
 Enh: Added the configuration file for generating message translations.
 Enh: Added instructions and details about the patch and messages directory configuration.
 Bug: GxActiveRecord::pkSeparator and GxActiveRecord::repColumnsSeparator shouldn't be static.
+Bug: Now generating the proper label for the relation in the view "_view".
 
 Version 1.9, 2011-07-06
 ----------------------------
